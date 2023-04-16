@@ -143,4 +143,4 @@ def k-nn_ingestion_by_aos(docs,index,hostname,passwd)
 #############################################################
 def k-nn_ingestion_by_lanchain(docs,vectorStore)
     for doc in docs:
-        opensearch_vector_search.add_texts(docs,batch_size=10)
+        vectorStore.add_texts(docs,batch_size=10)
