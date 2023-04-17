@@ -48,8 +48,10 @@ def get_vector_by_sm_endpoint(questions,sm_client,endpoint_name,parameters):
         ),
         ContentType="application/json",
     )
-
-    return response_model['Body'].read().decode('utf8')
+    json_str = response_model['Body'].read().decode('utf8')
+    json_obj = json.loads(json_str)
+    embeddings = json_obj['sentence_embeddings']
+    return embeddings
 
 
 ########get embedding vector by lanchain vector search########
@@ -141,7 +143,7 @@ def k_nn_ingestion_by_aos(docs,index,hostname,username,passwd):
         search.index(index=index, body=document)
 
 
-    ########k-nn ingestion by lanchain #########################
+########k-nn ingestion by lanchain #########################
 # input:
 #  docs:ingestion source documents
 #  vectorStore: lanchain AOS vectorStore instance
