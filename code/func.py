@@ -117,7 +117,7 @@ def search_using_aos_knn(q, hostname, username,passwd, index, source_includes, s
 # return:
 #  result : N/A
 #############################################################
-def k_nn_ingestion_by_aos(docs,index,hostname,passwd)
+def k_nn_ingestion_by_aos(docs,index,hostname,passwd):
     search = OpenSearch(
         hosts = [{'host': host, 'port': 443}],
         ##http_auth = awsauth ,
@@ -141,6 +141,6 @@ def k_nn_ingestion_by_aos(docs,index,hostname,passwd)
 # return:
 #  result : N/A
 #############################################################
-def k_nn_ingestion_by_lanchain(docs,vectorStore)
+def k_nn_ingestion_by_lanchain(docs,vectorStore):
     for doc in docs:
         opensearch_vector_search.add_texts(docs,batch_size=10)
